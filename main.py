@@ -9,7 +9,9 @@ def main():
     num_words = get_num_words(file_contents)
     chars_dict = get_chars_dict(file_contents)
     print(f"{num_words} words found in the document")
-    print(chars_dict)
+    
+    for char_info in chars_dict:
+        print(f"There are {char_info['num']} of '{char_info['name']}' inside this passage!")
     
 
 def get_num_words(file_contents):
