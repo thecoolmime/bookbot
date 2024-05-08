@@ -16,14 +16,22 @@ def get_num_words(file_contents):
     words = file_contents.split()
     return len(words)
 
+def sort_on(dict):
+    return dict["num"]
+
+
 def get_chars_dict(file_contents):
-    chars = {}
-    for c in file_contents:
-        lowered = c.lower()
-        if lowered in chars:
-            chars[lowered] += 1
+    char_counts = {}
+    for c in file_contents.lower():
+        if c in char_counts:
+            char_counts[c] += 1
         else:
-            chars[lowered] =1
+            char_counts[c] =1
+
+    # Convert the dictionary to a list of dictionaries
+    chars = [{"name": char, "num": count} for char, count in char_counts.items()]
+    # Sort the list of dictionaries using the sort_on function
+    chars.sort(reverse=True, key = sort_on)
     return chars
         
 def get_book_text(path):
